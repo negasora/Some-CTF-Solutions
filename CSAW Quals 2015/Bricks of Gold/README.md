@@ -115,4 +115,4 @@ Using the PDF header, we got a key: BIZZ
 and, upon decrypting with that key, we get a PDF containing:
 
 
-![alt text](./flag.png "PDF. Really?)
+![alt text](/flag.png "PDF. Really?)
