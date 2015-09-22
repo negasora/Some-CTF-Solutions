@@ -114,5 +114,5 @@ I ended up barely missing out on the submission time with my working guess: PDF.
 Using the PDF header, we got a key: BIZZ
 and, upon decrypting with that key, we get a PDF containing:
 
-Inline-style: 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+
+![alt text](http://i.imgur.com/RKbGKSj.png "PDF. Really?)
