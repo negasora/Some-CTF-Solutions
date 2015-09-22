@@ -115,4 +115,4 @@ Using the PDF header, we got a key: BIZZ
 and, upon decrypting with that key, we get a PDF containing:
 
 
-![alt text](/flag.png "PDF. Really?)
+![Alt text](https://github.com/negasora/CTFWriteups/blob/master/CSAW%20Quals%202015/Bricks%20of%20Gold/flag.png "PDF. Really?)
