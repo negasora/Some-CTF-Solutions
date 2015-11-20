@@ -24,7 +24,7 @@ with decryption looking strikingly similar
 ...ew
 
 We're given:
-
+```python
 n = 20313365319875646582924758840260496108941009525871463319046021451803402705157052789599990588403L
 e = 1404119484958500351776
 
@@ -33,21 +33,22 @@ and
 ctxt = 4104314974842034312729644734009867622818315323910143873563666990448837112322264379294617825939
 so
 (master_key^e % n) = 4104314974842034312729644734009867622818315323910143873563666990448837112322264379294617825939
+
 IV = ctxt[78:94] ^ seed
 
 len(KEY) = 24
 len(seed) = 16
-
+```
 and seed is the first 6 bytes of the PNG header + '0000'
 
 
 so if we can find master_key, we're golden
 
 Let's try factoring n with our friendly neighborhood factordb.com
-
+```python
 p = 123722643358410276082662590855480232574295214169
 q = 164184701914508585475304431352949988726937945387
-
+```
 at this point, I thought the rest of the challenge would be a cakewalk
 Oh, how wrong I was
 
@@ -58,7 +59,7 @@ so to get e to a prime factor, we divide e by 32
 so now e = 43878733904953135993
 
 running all the new numbers through solve500.py (shoutout to 193s for the original script), we're presented with a few possibilities:
-
+```python
 8850291109671606187019051385847346626341633319270658248902240757028899879368625867493699093050
 351597904423835841539846968300368167079348230618685886996023032073621044810985513589420381173
 19961767415451810741384911871960127941861661295252777432049998419729781660346067276010570207230
@@ -75,9 +76,9 @@ running all the new numbers through solve500.py (shoutout to 193s for the origin
 10694352512977685292706297519073976211835256122271356250267195565214895713195632573811476916485
 11463074210204040395905707454413149482599376206600805070143780694774502825788426922106291495353
 10536980334163667628116305702928338106304331156812769192183405188005345766007681476052434749854
-
+```
 But, knowing that
-
+```python
 KEY = ptxt
 if len(KEY) == 24:
     print 'all is good'
@@ -86,14 +87,15 @@ master_key = ""
 m = map(ord, ptxt)
 for i in m:
 	master_key += str(m)
-
+```
 we know that len(master_key) = 24
 
 so, we need to find which of these number gives master_key something resembling the correct length, which is anywhere in the range of 48-72, assuming master_key is humar-readable (minimum length 2 of ord(char) and max length 3)
 
 the only one that's even remotely close is 10911110995115971211159510710112111595971141019511510199114101116,
 which through a little reformatting and common sense gives us
+```python
 master_key = [109,111,109,95,115,97,121,115,95,107,101,121,115,95,97,114,101,95,115,101,99,114,101,116]
-
+```
 now, we can just throw our final numbers in the decrypt() function, and we get the flag
 
