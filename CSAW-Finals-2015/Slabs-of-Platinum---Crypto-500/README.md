@@ -95,7 +95,9 @@ So, we need to find which of these number gives master_key something resembling 
 The only one that's even remotely close is 10911110995115971211159510710112111595971141019511510199114101116, which through a little reformatting and common sense gives us
 ```python
 master_key = [109,111,109,95,115,97,121,115,95,107,101,121,115,95,97,114,101,95,115,101,99,114,101,116]
+(mom_says_keys_are_secret)
 ```
+
 Now, we can just throw our final numbers in the decrypt() function, and we get the flag
 
 flag{Crypto_LITERACY_IS_IMPORTANT_FAM_#DiversifyYoPrimes}
