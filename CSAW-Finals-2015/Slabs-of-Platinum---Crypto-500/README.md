@@ -98,6 +98,6 @@ master_key = [109,111,109,95,115,97,121,115,95,107,101,121,115,95,97,114,101,95,
 (mom_says_keys_are_secret)
 ```
 
-Now, we can just throw our final numbers in the decrypt() function, and we get the flag
-
+Now, we can just throw our final numbers in the decrypt() function, and we get the flag (after some PNG repair):
+![flag](cash.png)
 flag{Crypto_LITERACY_IS_IMPORTANT_FAM_#DiversifyYoPrimes}
