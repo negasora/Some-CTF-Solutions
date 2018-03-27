@@ -1,0 +1,119 @@
+<!doctype HTML>
+<html>
+    <head>
+        <title>Source Bucket</title>
+        <link rel="stylesheet" href="/static/css/cosmo.min.css">
+        <link rel="stylesheet" href="/static/css/sticky-footer-navbar.css">
+		<script src="/static/js/jquery-3.2.1.min.js"></script>
+        <script src="/static/js/bootstrap.min.js"></script>
+
+<link href="/static/css/prism.css" rel="stylesheet" />
+
+    </head>
+    <body>
+        <nav class="navbar navbar-default"><div class="container-fluid">
+            <div class="navbar-header">
+                <a href="/" class="navbar-brand">Source Bucket</a>
+            </div>
+            <div class="nav navbar-nav">
+                <ul class="nav navbar-nav">
+                    <li><a href="/repos">Repos</a></li>
+                    <li><a href="/report">Report Issue</a></li>
+                </ul>
+            </div>
+            <div class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav">
+
+                    <li><a href="/login">Login</a></li>
+
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+
+<div class="page-header">
+  <h1>broadcastr / flag-service</h1>
+</div>
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading"><a href="/broadcastr/flag-service">flag-service</a>
+      / flagserver.py</div>
+    <div class="panel-body">
+        <pre><code class="language-python">
+import os,time,json
+from flask import Flask, render_template, session, abort, jsonify, redirect, url_for, request, Response
+
+app = Flask(__name__)
+app.secret_key = os.urandom(32)
+
+@app.route(&#39;/&#39;)
+def index():
+    if request.remote_addr != &#39;127.0.0.1&#39;:
+        abort(403)
+    if not session.get(&#39;admin&#39;, False):
+        return redirect(url_for(&#39;login&#39;,_redirect=url_for(&#39;index&#39;)))
+    return render_template(&#39;index.html&#39;,
+            flag=session.get(&#39;flag&#39;,None), token=session[&#39;csrftoken&#39;])
+
+@app.route(&#39;/login&#39;, methods=[&#39;GET&#39;,&#39;POST&#39;])
+def login():
+    if request.remote_addr != &#39;127.0.0.1&#39;:
+        abort(403)
+    session[&#39;_redirect&#39;] = request.args.get(&#39;_redirect&#39;,url_for(&#39;index&#39;))
+    if request.method == &#39;GET&#39;:
+        print session
+        return render_template(&#39;login.html&#39;)
+    if request.form[&#39;user&#39;] == &#39;admin&#39; and request.form[&#39;pass&#39;] == &#39;d6e2dec0eb3394a&#39;:
+        session[&#39;admin&#39;] = True
+        session[&#39;csrftoken&#39;] = os.urandom(16).encode(&#39;hex&#39;)
+        return redirect(session.get(&#39;_redirect&#39;, url_for(&#39;index&#39;)))
+
+    session[&#39;last_failed_login&#39;] = &#39;%u with %s&#39;%(time.time(), request.form[&#39;user&#39;])
+    return render_template(&#39;login.html&#39;, error=&#39;Could not log you in&#39;)
+
+@app.route(&#39;/flag&#39;,methods=[&#39;GET&#39;,&#39;POST&#39;])
+def flag():
+    if request.remote_addr != &#39;127.0.0.1&#39;:
+        abort(403)
+    if not session.get(&#39;admin&#39;,False):
+        abort(403)
+    if not request.form.get(&#39;token&#39;,&#39;&#39;) == session.get(&#39;csrftoken&#39;):
+        abort(403)
+    with open(&#34;/oauth/flag.txt&#34;,&#39;r&#39;) as flag:
+        session[&#39;flag&#39;] = flag.read().strip()
+    return redirect(url_for(&#39;index&#39;))
+
+@app.route(&#39;/debug&#39;)
+def debug():
+    if request.remote_addr != &#39;127.0.0.1&#39;:
+        abort(403)
+    data = &#39;, &#39;.join(str(k)+&#39; &#39;+str(v) for k,v in
+            sorted(session.items(),key=lambda x:x[0]))
+    return Response(data, mimetype=&#39;text/plain&#39;)
+
+
+if __name__ == &#39;__main__&#39;:
+    app.run(port=3000,host=&#39;127.0.0.1&#39;)
+
+        </code></pre>
+    </div>
+  </div>
+  <script src="/static/js/prism.js"></script>
+
+
+
+
+
+        </div>
+
+        <!--footer class="footer">
+            <div class="container text-center">
+                <p class="text-muted">&copy; 2017 Broadcastr. Are you a developer? Check out our api on <a href="http://bucket.broadcastr.chal.csaw.io:4000/broadcastr/broadcastr-api">SourceBucket</a></p>
+            </div>
+        </footer-->
+
+    </body>
+</html>
+
