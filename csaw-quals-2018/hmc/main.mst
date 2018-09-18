@@ -1,0 +1,17 @@
+
+<div class="header">
+Hacker Movie Club
+</div>
+
+<div class="header admin">
+Welcome to the desert of the real.
+</div>
+
+{{#movies}}
+      <img src="http://lights.hawkhe.art?{{ name }}"></img>
+{{/movies}}
+
+<div class="captcha">
+  <div id="captcha"></div>
+</div>
+<button id="report" type="submit" class="report"></button>
