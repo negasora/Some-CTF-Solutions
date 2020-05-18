@@ -1,6 +1,6 @@
 [submodule "defcon-quals-2020/cooopersmith/cado-nfs"]
 	path = defcon-quals-2020/cooopersmith/cado-nfs
 	url = https://gitlab.inria.fr/cado-nfs/cado-nfs.git
-[submodule "defcon-quals-2020/defcon-quals-2020/foooled/ecgen"]
-	path = defcon-quals-2020/defcon-quals-2020/foooled/ecgen
+[submodule "defcon-quals-2020/foooled/ecgen"]
+	path = defcon-quals-2020/foooled/ecgen
 	url = https://github.com/J08nY/ecgen.git
