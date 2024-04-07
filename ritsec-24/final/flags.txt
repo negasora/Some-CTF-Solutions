@@ -1,0 +1,54 @@
+web
+
+RS{g30m2ty_d@sh_!s_l!f3}
+RS{1NJ3CT_AND_1NCLUD3}
+
+
+Here's what you've learned: 'The first half of the cipher text is uvn3YwgzZ4RVT4xRulclxzGgUGAtKEPOxW/yP3mOwMa7nQ+Q260G+08raB0XSPX7'
+
+pwn
+
+RS{to_gump_or_not_to_gump}
+RS{CLU3S_1N_R1DDL3S_4R3_C0NFUS1NG}
+
+Here's what you've learned: 'The key must be XORed with 0b1100011011011100111001011001000111011011011110010010100110011000000000101110100001001100001000100100010101011010000111101010101100000100000011010101100111111000111010101111111011011011111100110011001011011101111100101011011111111010111110101010111010101000 in order to work'
+
+reversing
+
+RS{Th3_r3al_0n35_4re_b35t_:)}
+RS{gu3ssy_funct1on}
+RS{g0_g3t_y0_fl4g}
+
+
+Here's what you've learned: 'The iv is 180775230571011695939483724432608877824, more or less'
+
+
+crypto
+
+RS{0n3_Ch4r4cT3R_@t_4_t1Me}
+RS{Th4T's_n0T_h0w_Y0u_u53_OTP}
+RS{W0W_TH1S_K3YSP4C3_1S_4S_FL4T_4S_34RTH}
+RS{Y0U_C4NT_R3AD_M3_R1GHT??}
+
+Here's what you've learned: 'The key is a sha256 hash of "Getting warmer", though that doesn\'t work by itself. The cipher is AES CBC.'
+
+
+forensics
+
+RS{26f9c2fcdfe8e86804eb}
+RS{pc@p$_@r3_0ur_fr!3nd$}
+RS{tHe_HaCKer_TeRMiNAL}
+RS{rsvbits}
+
+
+Here's what you've learned: 'The missing bytes in the iv are [21, 252, 130, 220, 188, 41, 83, 246]'
+
+misc
+
+RS{2213609288845146114}
+RS{PINBALLWIZARD}
+RS{I_Th1nk_its_3D_now}
+RS{t0_svg_0R_n0t_svg}
+RS{01000111}
+
+Here's what you've learned: 'The second half of the cipher text is 692bbc41b29c7832eb8b074a089ba8fbfb360032b276683c40d2ecdbb49b822bf5261fb39adc454e14c82a763970a8f1'
