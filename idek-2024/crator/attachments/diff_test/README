@@ -1,0 +1,3 @@
+checks if stdout of diff exists, if so it's a failure
+
+can we somehow make diff output to stderr and use that as a sidechannel
