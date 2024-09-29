@@ -1,0 +1,5 @@
+.vscode
+target/
+.venv
+.gdb_history
+misc/gitgoo/out
