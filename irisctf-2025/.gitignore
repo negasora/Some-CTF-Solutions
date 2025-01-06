@@ -1,0 +1,6 @@
+.vscode
+.gdb_history
+pwn/checksumz.tar.gz
+pwn/checksumz/artifacts
+Pipfile
+Pipfile.lock
